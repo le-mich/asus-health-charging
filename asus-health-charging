@@ -1,0 +1,8 @@
+# If manually launched:
+    # Ask which percentage the user wants to maintain
+    # Write to ~/.config/asus-health-charging.conf
+    # Apply to system (write to /sys/class/power_supply/BAT*/charge_control_end_threshold)
+
+# If launched by the system (--restore):
+    # Read from ~/.config/asus-health-charging.conf
+    # Apply to system (write to /sys/class/power_supply/BAT*/charge_control_end_threshold)
