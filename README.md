@@ -1,5 +1,4 @@
-# Asus health charging
-### _on Linux_
+# Asus health charging _on Linux_
 
 Since there is no official program to manage the battery level from Asus
 and since TLP will not provide it because it doesn't follow the standard,
