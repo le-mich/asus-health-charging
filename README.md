@@ -55,5 +55,5 @@ returns the value stored in `charge_control_end_threshold`.
 - [x] README
 - [x] Systemd service
 - [ ] Install script
-- [ ] Manpage
+- [x] Manpage
 - [ ] Applet for Budgie (or the latest DE I'm using)

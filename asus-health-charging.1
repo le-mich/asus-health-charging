@@ -1,0 +1,23 @@
+.TH asus-health-charging 1
+.SH NAME
+asus-health-charging \- Battery management for Asus laptops
+.SH SYNOPSIS
+.B asus-health-charging
+[\fIPERCENT\fR]
+[\fB\-\-restore\fR]
+[\fB\-\-current\fR]
+.SH DESCRIPTION
+.B asus-health-charging
+disables charging when battery reaches or is over the chosen level.
+.SH OPTIONS
+.TP
+.BR \fIPERCENT\fR
+Set the charge threshold to the specified value, with 15 MIN and 100 MAX values.
+.TP
+.BR \-\-restore\fR
+Restores the last used value from /etc/asus-health-charging.d/percentage,
+if available.
+.TP
+.BR \-\-current\fR
+Returns the current content of the system threshold file,
+to be used in external programs.
