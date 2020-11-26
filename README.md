@@ -1,5 +1,5 @@
 # Asus health charging
-## _on Linux_
+### _on Linux_
 
 Since there is no official program to manage the battery level from Asus
 and since TLP will not provide it because it doesn't follow the standard,
@@ -20,7 +20,7 @@ And then:
 ```
 
 ## Usage
-You can now launch the script (eg. 60%):
+You can now launch the script (e.g. 60%):
 ```
 $ sudo asus-health-charging 60
 ```
