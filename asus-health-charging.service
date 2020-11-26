@@ -1,0 +1,10 @@
+[Unit]
+Description=Asus health charging utility
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh /usr/bin/asus-health-charging --restore
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
