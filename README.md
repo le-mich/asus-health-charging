@@ -5,21 +5,48 @@ and since TLP will not provide it because it doesn't follow the standard,
 I made my own!
 
 ## Install
-___It is highly recommended that you place the script in one of the folders listed in PATH.___
+An install script is provided, run it with `sudo`.
+__If__ you have systemd, you can then start and enable the service.
+
+
+## Manual install
+___It is highly recommended that you place the script in `/usr/bin` as it is used
+in the rest of the project as script path.___
 
 From a root shell create folder `/etc/asus-health-charging.d/`.
-
 ```
 # mkdir /etc/asus-health-charging.d
 ```
-And then:
 
+Find the interface and configure the program:
 ```
 # echo $(find -L /sys/class/power_supply -maxdepth 2 -type f -name 'charge_control_end_threshold' 2> /dev/null) > /etc/asus-health-charging.d/interface
 ```
 
+Install the script (assuming `pwd` is the local repo clone):
+```
+# cp ./asus-health-charging /usr/bin
+```
+
+__If__ your OS uses systemd, install the unit file:
+```
+# cp ./asus-health-charging /etc/systemd/system
+```
+
+Start and enable the service:
+```
+# systemctl start asus-health-charging.service
+# systemctl enable asus-health-charging.service
+```
+
+At last install the man page:
+```
+# cp ./asus-health-charging /usr/share/man/man1
+```
+
+
 ## Usage
-You can now launch the script (e.g. 60%):
+You can launch the script (e.g. 60%):
 ```
 $ sudo asus-health-charging 60
 ```
@@ -28,14 +55,15 @@ This command will set the battery level at which the system will stop charging.
 If the actual battery level is already beyond this threshold it will not be decreased.
 
 With this one command the script will place the value inside `charge_control_end_threshold`
-under `/sys` for immediate control and the file `percentage` in `/etc/asus-health-charging.d` for restore on startup.
+under `/sys` for immediate control and the file `percentage` in `/etc/asus-health-charging.d`
+for restore on startup.
 
 This command will test the nuber used, values must be between 15 and 100 (included).
 This is because LiPo batteries suffer when discharged too much, and because _I'm opinionated_.
 
 ### __--restore__
-The provided Unit file will restore the last session automatically. If you have systemd place the `.service` file
-in `/etc/systemd/system` and then enable and start the service.
+__If__ you have systemd the provided Unit file, once enabled,will restore the
+last session automatically.
 
 At startup it will run once and return. It is then possible to change threshold freely.
 
@@ -54,6 +82,6 @@ returns the value stored in `charge_control_end_threshold`.
 - [x] Script
 - [x] README
 - [x] Systemd service
-- [ ] Install script
+- [x] Install script
 - [x] Manpage
 - [ ] Applet for Budgie (or the latest DE I'm using)
