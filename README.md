@@ -6,12 +6,13 @@ I made my own!
 
 ## Install
 An install script is provided, run it with `sudo`.
+
 __If__ you have systemd, you can then start and enable the service.
 
 
 ## Manual install
 ___It is highly recommended that you place the script in `/usr/bin` as it is used
-in the rest of the project as script path.___
+in the rest of the project as script location.___
 
 From a root shell create folder `/etc/asus-health-charging.d/`.
 ```
@@ -23,7 +24,7 @@ Find the interface and configure the program:
 # echo $(find -L /sys/class/power_supply -maxdepth 2 -type f -name 'charge_control_end_threshold' 2> /dev/null) > /etc/asus-health-charging.d/interface
 ```
 
-Install the script (assuming `pwd` is the local repo clone):
+Install the script (assuming `pwd` is the local clone of this repository):
 ```
 # cp ./asus-health-charging /usr/bin
 ```
@@ -39,14 +40,14 @@ Start and enable the service:
 # systemctl enable asus-health-charging.service
 ```
 
-At last install the man page:
+_At last_, install the man page:
 ```
 # cp ./asus-health-charging /usr/share/man/man1
 ```
 
 
 ## Usage
-You can launch the script (e.g. 60%):
+You can launch the script with (e.g. 60%):
 ```
 $ sudo asus-health-charging 60
 ```
@@ -59,18 +60,19 @@ under `/sys` for immediate control and the file `percentage` in `/etc/asus-healt
 for restore on startup.
 
 This command will test the nuber used, values must be between 15 and 100 (included).
-This is because LiPo batteries suffer when discharged too much, and because _I'm opinionated_.
+
+The lower bound is because LiPo batteries suffer when discharged too much, and because _I'm opinionated_.
 
 ### __--restore__
-__If__ you have systemd the provided Unit file, once enabled,will restore the
-last session automatically.
+__If__ you have systemd, the provided Unit file once enabled will restore the
+last session automatically, once enabled.
 
 At startup it will run once and return. It is then possible to change threshold freely.
 
 If you don't use systemd or want to use a different method to restore the charge limit
 you can use
 ```
-sudo asus-health-charging --restore
+$ sudo asus-health-charging --restore
 ```
 
 ### __--current__
@@ -84,4 +86,4 @@ returns the value stored in `charge_control_end_threshold`.
 - [x] Systemd service
 - [x] Install script
 - [x] Manpage
-- [ ] Applet for Budgie (or the latest DE I'm using)
+- [ ] Applet for Budgie (or the latest DE I'm using, we'll see)
