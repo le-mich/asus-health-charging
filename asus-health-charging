@@ -12,8 +12,8 @@ setter () {
 		echo "$ASUS_HEALTH_PERCENTAGE" > "$PERCENTAGE_FILE"
 		echo "$ASUS_HEALTH_PERCENTAGE" > "$ASUS_HEALTH_INTERFACE"
 	else
-		>&2 echo "asus-health-charging: invalid parameter"
-		>&2 echo "asus-health-charging: set a percentage beetween 15 and 100"
+		>&2 echo "asus-health-charging: invalid parameter."
+		>&2 echo "asus-health-charging: set a percentage beetween 15 and 100."
 		exit 1
 	fi
 }
@@ -21,7 +21,7 @@ setter () {
 # Interface check
 if [[ ! -f "$INTERFACE_FILE" ]]
 then
-	>&2 echo "asus-health-charging: \"$INTERFACE_FILE\" file not found"
+	>&2 echo "asus-health-charging: \"$INTERFACE_FILE\" file not found!"
 	exit 1
 fi
 
@@ -29,7 +29,7 @@ ASUS_HEALTH_INTERFACE=$(cat "$INTERFACE_FILE")
 
 if [[ ! -f "$ASUS_HEALTH_INTERFACE" ]]
 then
-	>&2 echo "asus-health-charging: \"$ASUS_HEALTH_INTERFACE\" file not found"
+	>&2 echo "asus-health-charging: \"$ASUS_HEALTH_INTERFACE\" file not found!"
 	exit 1
 fi
 # End of interface check
@@ -42,11 +42,11 @@ case $1 in
 "--restore")
 	if [[ -f "$PERCENTAGE_FILE" ]]
 	then
-	    echo "asus-health-charging: Restoring from configuration"
+	    echo "asus-health-charging: Restoring from configuration."
 		setter $(cat "$PERCENTAGE_FILE")
 	else
-		>&2 echo "asus-health-charging: \"$PERCENTAGE_FILE\" file not found"
-		>&2 echo "asus-health-charging: reverting to default value 100%"
+		>&2 echo "asus-health-charging: \"$PERCENTAGE_FILE\" file not found!"
+		>&2 echo "asus-health-charging: reverting to default value 100."
 		setter 100
 	fi
 	;;
