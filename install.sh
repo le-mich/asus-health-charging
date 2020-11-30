@@ -7,16 +7,22 @@ BIN_DIR="/usr/bin"
 UNIT_DIR="/etc/systemd/system"
 MAN_DIR="/usr/share/man/man1"
 
-echo "Looking for interface in /sys/class/power_supply.."
-INTERFACE=$(find -L /sys/class/power_supply -maxdepth 2 -type f -name 'charge_control_end_threshold' 2> /dev/null | head -1)
-
-if [[ -n "$INTERFACE" ]]
+if [[ $1 == "--interface" ]]
 then
-	echo "Interface found!"
+echo "Using provided interface: \"$2\"."
+	INTERFACE="$2"
 else
-	>&2 echo "Your system seems to be incompatible!"
-	>&2 echo "If sure of compatibility, please perform a manual install."
-	exit 1
+	echo "Looking for interface in /sys/class/power_supply.."
+	INTERFACE=$(find -L /sys/class/power_supply -maxdepth 2 -type f -name 'charge_control_end_threshold' 2> /dev/null | head -1)
+
+	if [[ -n "$INTERFACE" ]]
+	then
+		echo "Interface found!"
+	else
+		>&2 echo "Your system seems to be incompatible!"
+		>&2 echo "If sure of compatibility, please try --interface option or perform a manual install."
+		exit 1
+	fi
 fi
 
 echo ""

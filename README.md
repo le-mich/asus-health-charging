@@ -6,6 +6,9 @@ I made my own!
 
 ## Install
 An install script is provided, run it with `sudo`.
+If for some reason the script doesn't find the interface file,
+it's possible to override the interface search stage by
+using the option `--interface /<path>/<to>/<your>/charge_control_end_threshold`.
 
 __If__ you have systemd, you can then start and enable the service.
 
