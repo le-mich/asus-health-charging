@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # Configuration files
 PERCENTAGE_FILE="/etc/asus-health-charging.d/percentage"
@@ -19,7 +19,7 @@ setter () {
 }
 
 # Interface check
-if [[ ! -f "$INTERFACE_FILE" ]]
+if [ ! -f "$INTERFACE_FILE" ]
 then
 	>&2 echo "asus-health-charging: \"$INTERFACE_FILE\" file not found!"
 	exit 1
@@ -27,7 +27,7 @@ fi
 
 ASUS_HEALTH_INTERFACE=$(cat "$INTERFACE_FILE")
 
-if [[ ! -f "$ASUS_HEALTH_INTERFACE" ]]
+if [ ! -f "$ASUS_HEALTH_INTERFACE" ]
 then
 	>&2 echo "asus-health-charging: \"$ASUS_HEALTH_INTERFACE\" file not found!"
 	exit 1
@@ -40,7 +40,7 @@ case $1 in
 	cat "$ASUS_HEALTH_INTERFACE"
 	;;
 "--restore")
-	if [[ -f "$PERCENTAGE_FILE" ]]
+	if [ -f "$PERCENTAGE_FILE" ]
 	then
 	    echo "asus-health-charging: Restoring from configuration."
 		setter $(cat "$PERCENTAGE_FILE")

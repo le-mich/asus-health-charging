@@ -34,7 +34,7 @@ Install the script (assuming `pwd` is the local clone of this repository):
 
 __If__ your OS uses systemd, install the unit file:
 ```
-# cp ./asus-health-charging /etc/systemd/system
+# cp ./asus-health-charging.service /etc/systemd/system
 ```
 
 Start and enable the service:
