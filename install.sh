@@ -59,6 +59,7 @@ if [[ -d "$MAN_DIR" ]]
 then
 	echo "Installing manpage in \"$MAN_DIR\"."
 	cp -f "$REPO_DIR/asus-health-charging.1" "$MAN_DIR"
+	chmod 644 "$MAN_DIR/asus-health-charging.1"
 fi
 
 echo ""
